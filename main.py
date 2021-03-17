@@ -4,15 +4,9 @@ import pyautogui
 import time
 from datetime import datetime
 
-
-
 def signIn(meetingid):
     subprocess.call("C:\Program Files (x86)\Tencent\WeMeet\wemeetapp.exe")
     time.sleep(3)
-
-
-
-
 
     join_btn = pyautogui.locateCenterOnScreen('join_button.png')
     pyautogui.moveTo(join_btn)
@@ -36,7 +30,6 @@ def signIn(meetingid):
     pyautogui.click()
     time.sleep(5)
 
-
     close_button = pyautogui.locateCenterOnScreen('close_button.png')
     pyautogui.moveTo(close_button)
     pyautogui.click()
@@ -47,23 +40,22 @@ def signIn(meetingid):
     pyautogui.click()
     time.sleep(3)
 
-df = pd.read_excel('timings.xlsx')
+# df = pd.read_excel('timings.xlsx')
 
-while True:
-    # To get current time
-    now = datetime.now().strftime("%H:%M")
-    if now in str(df['Timings']):
-        mylist = df["Timings"]
-        mylist = [i.strftime("%H:%M") for i in mylist]
-        c = [i for i in range(len(mylist)) if mylist[i] == now]
-        row = df.loc[c]
-        meeting_id = str(row.iloc[0, 1])
+# while True:
+#     # To get current time
+#     now = datetime.now().strftime("%H:%M")
+#     if now in str(df['Timings']):
+#         mylist = df["Timings"]
+#         mylist = [i.strftime("%H:%M") for i in mylist]
+#         c = [i for i in range(len(mylist)) if mylist[i] == now]
+#         row = df.loc[c]
+#         meeting_id = str(row.iloc[0, 1])
 
-        time.sleep(5)
-        signIn(meeting_id)
-        time.sleep(2)
-        print('signed in')
-        break
-
+#         time.sleep(5)
+#         signIn(meeting_id)
+#         time.sleep(2)
+#         print('signed in')
+#         break
 
 #signIn('448949037')
